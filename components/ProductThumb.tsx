@@ -6,6 +6,8 @@ import Link from "next/link";
 import React from "react";
 
 const ProductThumb = ({ product }: { product: Product }) => {
+  // console.log(product);
+
   const isOutOfStock =
     product.stock !== undefined && product.stock !== null && product.stock <= 0;
   return (
@@ -24,7 +26,9 @@ const ProductThumb = ({ product }: { product: Product }) => {
           />
         )}
         {isOutOfStock && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black opacity-50"></div>
+          <div className="absolute inset-0 flex items-center justify-center bg-black opacity-50">
+            <span className="text-white text-lg font-bold">Out of Stock</span>
+          </div>
         )}
       </div>
       <div className="p-4">
