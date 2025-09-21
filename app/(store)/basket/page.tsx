@@ -7,13 +7,9 @@ import { useState } from "react";
 import AddToBasketButton from "@/components/AddToBasketButton";
 import { imageUrl } from "@/lib/imageUrl";
 import Image from "next/image";
+import { createCheckoutSession, Metadata } from "@/actions/createCheckoutSession";
 
-export type Metadata = {
-    orderNumber: string;
-    customerName: string;
-    customerEmail: string;
-    clerkUserId: string;
-}
+
 
 function BasketPage() {
   const groupedItems = useBasketStore((state) => state.getGroupedItems());
@@ -21,7 +17,7 @@ function BasketPage() {
   const { user } = useUser();
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   if (groupedItems.length === 0) {
     return (
